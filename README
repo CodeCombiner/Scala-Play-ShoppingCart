@@ -62,7 +62,7 @@ db.default.username=root
 db.default.password=""
 
 # SQL Db Script location
-path: app/db/shoppingcart_mysql.sql
+path: db/shoppingcart_mysql.sql
 
 
 
