@@ -1,0 +1,68 @@
+This is Shopping Cart with MySql and Redis
+==========================================
+
+Concept :
+- Showing Product List data from MySql
+- Saving Cart in Redis
+- Unique identifier redis by Token / Session (N/A)
+- Authentication (N/A)
+- Repository Pattern -> I dont't know why the injector in 2.4.3 doesn't work, therefore i just call the implementator directly
+  If the injector could work properly, the repository pattern would work as well
+- Add more module and utlize micro service feature async (N/A)
+- Global config doesn't work -> actually i would utilize it to generate schema and create some data seeding (N/A)
+- Unit Test for Rest API -> need to researh the specific UT for Rest API (N/A)
+
+# Furthermore, read about scala story and know about feature and ability made me say Scala is awesome
+# However, need more learn about the scala core function
+
+# N/A is Not Applicable, it's just note for future improvement
+
+# Stack :
+- Scala 2.11.4 
+- Play 2.4.3
+- Slick 3.0.0
+- Redis Client 3.0.0
+- MySQL Connector 5.1.21
+- Eclipse Sbt Plugin 4.0.0 - Required to do JVM Remote Debug
+
+GET      /               controllers.Application.index
+POST     /product        controllers.ProductController.createProduct
+GET      /product        controllers.ProductController.listProducts
+GET      /product/:id    controllers.ProductController.findProduct(id: Int)
+PUT      /product/:id    controllers.ProductController.updateProduct(id: Int)
+DELETE   /product/:id    controllers.ProductController.deleteProduct(id: Int)
+
+#Product Json Example
+{
+  "id": 1,
+  "name": "Jacket",
+  "CatId": 1,
+  "price": 50000,
+  "stock": 8
+}
+
+POST     /cart           controllers.CartController.createCart
+GET      /cart           controllers.CartController.listProductInCarts
+GET      /cart/:id       controllers.CartController.findCart(id: Int)
+DELETE   /cart/:id       controllers.CartController.deleteCart(id: Int)
+
+#Product Cart Example
+{
+  "id": 1,
+  "productId": 1
+}
+
+# Set default Redis Client
+val client = new RedisClient("localhost", 6379)
+
+# default MySql Config
+db.default.driver=com.mysql.jdbc.Driver
+db.default.url="jdbc:mysql://localhost/shoppingcart"
+db.default.username=root
+db.default.password=""
+
+# SQL Db Script location
+path: app/db/shoppingcart_mysql.sql
+
+
+
