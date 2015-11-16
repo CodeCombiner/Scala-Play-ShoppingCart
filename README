@@ -1,7 +1,7 @@
-This is Shopping Cart with MySql and Redis
-==========================================
+# This is Shopping Cart with MySql and Redis
+============================================
 
-Concept :
+**Concept :**
 - Showing Product List data from MySql
 - Saving Cart in Redis
 - Unique identifier redis by Token / Session (N/A)
